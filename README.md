@@ -1,23 +1,20 @@
-# Module template
+# @kernhq/module-template
 
-Copy this to start a Kern module. It is a whole working module: a `Note` entity with list, create
-and delete, its own Postgres schema, row-level security, permissions, events, **its own screens and
-its own strings**, and a test that refuses to let the contract and the router drift apart.
-
-A module is one package. The manifest, the pages, the widgets and the translations all live here —
-the application holds no screens belonging to a module, and deleting this package removes the
-feature completely. That is what makes it possible for somebody outside the Kern organisation to
-ship one: this package is Apache-2.0 and the application is not.
-
-The fastest way to copy it correctly is not to copy it by hand:
+**The starting point for a Kern module.** Apache-2.0, so what you build from it is yours to license
+however you like — including not at all.
 
 ```bash
-cd repos/modules
-pnpm new-module crm          # generates the whole module
+npm create kern-module            # not yet; for now:
+npx degit KernAIO/module-template my-module
 ```
 
-Read the rest of this file if you are doing it by hand, or if you want to know what the generator
-wrote.
+A Kern module is one package. This one is a whole working module — a `Note` entity with list,
+create, delete and archive, its own Postgres schema, row-level security, permissions, capabilities,
+events, **its own screens and its own strings** — and a test that refuses to let the contract and
+the router drift apart.
+
+The application holds no screens belonging to a module. Deleting your package removes your feature
+completely; that is the test of whether it is a module at all.
 
 ## What is in here
 
