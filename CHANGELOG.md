@@ -1,5 +1,11 @@
 # @kernhq/module-template
 
+## 0.2.2
+
+### Patch Changes
+
+- docs: the map — what a module is, and the one optional part
+
 ## 0.2.1
 
 ### Patch Changes
