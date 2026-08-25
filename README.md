@@ -16,6 +16,11 @@ the router drift apart.
 The application holds no screens belonging to a module. Deleting your package removes your feature
 completely; that is the test of whether it is a module at all.
 
+**[STRUCTURE.md](STRUCTURE.md) is the map** — what every directory is for, and the one part that is
+optional. In short: most modules are `contract` + `server` + `client`, and `core` hosts them. A
+module that needs its own process — an open socket, a queue it drains on its own clock — adds
+`src/service/` and a `Dockerfile`, and hosts itself. Nothing else changes.
+
 ## What is in here
 
 | File | What it is |
