@@ -1,5 +1,11 @@
 # @kernhq/module-template
 
+## 0.2.3
+
+### Patch Changes
+
+- fix: declare @kernhq/kernel and @kernhq/contracts as peerDependencies
+
 ## 0.2.2
 
 ### Patch Changes
