@@ -1,5 +1,11 @@
 # @kernhq/module-template
 
+## 0.2.4
+
+### Patch Changes
+
+- docs: update repo references for kern->app and app->shell rename
+
 ## 0.2.3
 
 ### Patch Changes
