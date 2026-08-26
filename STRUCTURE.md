@@ -80,6 +80,6 @@ Two lines. That is the entire integration surface:
 // the host service — core, or your own
 featureModules = [ …, myModule ]
 
-// repos/app/src/lib/modules/registry.ts
+// repos/shell/src/lib/modules/registry.ts
 registerModule(myClientModule)
 ```
