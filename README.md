@@ -18,8 +18,9 @@ completely; that is the test of whether it is a module at all.
 
 **[STRUCTURE.md](STRUCTURE.md) is the map** — what every directory is for, and the one part that is
 optional. In short: most modules are `contract` + `server` + `client`, and `core` hosts them. A
-module that needs its own process — an open socket, a queue it drains on its own clock — adds
-`src/service/` and a `Dockerfile`, and hosts itself. Nothing else changes.
+module that needs its own process — an open socket, a queue it drains on its own clock — is hosted
+by a sibling service repository (see `KernAIO/chat` and `KernAIO/mail`), which declares it in
+`featureModules` and ships the Dockerfile. Nothing else changes.
 
 ## What is in here
 
