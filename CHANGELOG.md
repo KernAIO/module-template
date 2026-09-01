@@ -1,5 +1,11 @@
 # @kernhq/module-template
 
+## 0.2.9
+
+### Patch Changes
+
+- docs: module services are sibling repos, not in-repo
+
 ## 0.2.8
 
 ### Patch Changes
