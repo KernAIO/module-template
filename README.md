@@ -71,6 +71,10 @@ for rendering this module's objects inside somebody else's screen, and `messages
 strings. The shell renders whatever it finds; there are no route files in the application to keep in
 step. Read the `kern-widget` skill before writing a widget, and `kern-module` for the whole sequence.
 
+**Internationalisation.** The starter ships its strings in English only, by design; the platform's
+locales are `en`, `de`, `fa`, `ar` and `tr`, and a module author adds the bundles their own module
+needs in `src/client/i18n.ts`.
+
 ### What a screen may reach for
 
 A module cannot import the application, so everything it needs from the shell comes from
