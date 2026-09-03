@@ -4,7 +4,6 @@
 however you like — including not at all.
 
 ```bash
-npm create kern-module            # not yet; for now:
 npx degit KernAIO/module-template my-module
 ```
 
