@@ -1,5 +1,11 @@
 # @kernhq/module-template
 
+## 0.2.10
+
+### Patch Changes
+
+- test: bless the permission matrix, and name the one way to start
+
 ## 0.2.9
 
 ### Patch Changes
