@@ -101,6 +101,32 @@ export const templateClientModule = defineClientModule({
   ],
 
   /**
+   * An overlay is the one thing a module renders that a navigation does not destroy.
+   *
+   * Everything above lives inside a page: open an issue and the route, its sidebar and its widgets
+   * are unmounted. An overlay is mounted once when the workspace opens and unmounted when it
+   * closes, so it is where anything that must not be interrupted goes — a call in progress, an
+   * upload, a countdown, a banner about work happening elsewhere. It is gated like every other
+   * contribution, and it is torn down on a workspace switch and on sign-out.
+   *
+   * Two rules worth having before writing one. It is mounted on *every* page of the workspace, so
+   * an overlay that always paints is a permanent band across the product: render nothing until
+   * there is something to say. And it is handed `workspaceId` and `workspaceSlug` and no location,
+   * because the route it was mounted on is not the route the person is on now — read `navigation`
+   * from `@kernhq/ui` if it needs to know.
+   *
+   * Delete this comment if the module has nothing to keep.
+   */
+  // overlays: [
+  //   {
+  //     id: 'template.banner',
+  //     component: () => import('./overlay/Banner.svelte'),
+  //     permission: TEMPLATE_PERMISSIONS.view,
+  //     capability: TEMPLATE_CAPABILITIES.notes,
+  //   },
+  // ],
+
+  /**
    * A settings page's `id` is its URL: the shell mounts a workspace-scope page at
    * `/<ws>/settings/<moduleId>/<id>`, and one whose id equals the module id at
    * `/<ws>/settings/<moduleId>`. Declaring it is the whole wiring.
