@@ -1,5 +1,18 @@
 # @kernhq/module-template
 
+## 0.2.11
+
+### Patch Changes
+
+- 41afa4c: Peer `@kernhq/kernel` at `^0.10.0`.
+
+  A caret on 0.x does not cross a minor, so `^0.9.1` stopped reaching the framework the moment 0.10.0
+  was published — `check-ranges.mjs` fails on it, and CI stops at the lint step before a single test
+  runs. The module builds and tests against 0.10.0 unchanged.
+
+  This is the package a third party clones to start a module, so the stale peer was the first thing
+  an outsider met.
+
 ## 0.2.10
 
 ### Patch Changes
