@@ -4,6 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@kernhq/contracts': ^0.8.0
+  '@kernhq/kernel': ^0.10.3
+
 importers:
 
   .:
@@ -821,9 +825,6 @@ packages:
 
   '@js-sdsl/ordered-map@4.4.2':
     resolution: {integrity: sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==}
-
-  '@kernhq/contracts@0.5.1':
-    resolution: {integrity: sha512-gderfMVPCEycarKTLS6YG3SekXmA+2vv7InT5vbUBCBVr47HdtcwFrzjCwD0YyVv4tQzMZH/vT43GOA2vydFrw==}
 
   '@kernhq/contracts@0.8.0':
     resolution: {integrity: sha512-UcQE9tYnlrwahW7v3ilUvgJSaiLdrA6CaOfONGhUBqh2s7LStPUa9skeyfbGU6TWJPFhhlOi2nKp30HVpxnATg==}
@@ -3800,13 +3801,6 @@ snapshots:
 
   '@js-sdsl/ordered-map@4.4.2': {}
 
-  '@kernhq/contracts@0.5.1':
-    dependencies:
-      '@orpc/contract': 1.15.0
-      zod: 4.4.3
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
   '@kernhq/contracts@0.8.0':
     dependencies:
       '@orpc/contract': 1.15.0
@@ -3882,7 +3876,7 @@ snapshots:
 
   '@kernhq/sdk@0.1.5':
     dependencies:
-      '@kernhq/contracts': 0.5.1
+      '@kernhq/contracts': 0.8.0
       '@orpc/client': 1.15.0
       '@orpc/contract': 1.15.0
       zod: 4.4.3
