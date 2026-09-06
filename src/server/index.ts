@@ -1,5 +1,6 @@
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { eq } from 'drizzle-orm'
 import {
   MODULE_ID,
   templateCapabilities,
@@ -45,7 +46,18 @@ export const templateModule = defineServerModule({
       return kernel.database.withWorkspace(
         workspaceId,
         async (tx) => {
-          const [existing] = await tx.select({ id: notes.id }).from(notes).limit(1)
+          /*
+           * The guard, and the one thing about it that is easy to get wrong: `workspace_id` is in
+           * the predicate rather than left to row-level security. The transaction is bound to the
+           * workspace, so RLS scopes this on a correctly-configured instance — and on one whose
+           * owner can bypass a policy it does not, so the guard sees another workspace's rows and
+           * reports this one as used. It then does nothing, quietly, for ever.
+           */
+          const [existing] = await tx
+            .select({ id: notes.id })
+            .from(notes)
+            .where(eq(notes.workspaceId, workspaceId))
+            .limit(1)
           if (existing) return { skipped: true }
           const rows = [
             { title: 'A note', body: 'Made when this workspace was created with example content.' },
