@@ -1,5 +1,11 @@
 # @kernhq/module-template
 
+## 0.2.17
+
+### Patch Changes
+
+- build: force one @kernhq/kernel copy with pnpm.overrides
+
 ## 0.2.16
 
 ### Patch Changes
