@@ -8,7 +8,7 @@ import {
   templatePermissions,
 } from '../contract.js'
 import { defineModule, defineServerModule, implement_, packageVersion } from './_impl.js'
-import { schema } from './schema.js'
+import { notes, schema } from './schema.js'
 
 export const templateModule = defineServerModule({
   definition: defineModule({
@@ -26,6 +26,41 @@ export const templateModule = defineServerModule({
   schema,
   migrationsFolder: join(dirname(fileURLToPath(import.meta.url)), '../../migrations'),
   router: implement_,
+
+  /**
+   * What this module puts in a workspace created with "Fill it with example content" ticked.
+   *
+   * The kernel subscribes this for you; you never write the subscription. Three rules, and the
+   * first one is the one that bites: **check that the workspace is empty and return early if it is
+   * not.** Delivery is at-least-once, so the seeder can be asked twice for one workspace, and
+   * dropping a second set of rows into somebody's data is worse than seeding nothing. Write through
+   * your own tables or services, never into another module's schema, and anchor dates to `ctx.now`
+   * so the content still reads as recent a year from now.
+   *
+   * `ctx.actor` is a service principal carrying the workspace owner's `userId`: it passes your
+   * permission checks, and what it writes is authored by the person who asked.
+   */
+  demo: {
+    seed: async ({ kernel, workspaceId, actorId, now }) => {
+      return kernel.database.withWorkspace(
+        workspaceId,
+        async (tx) => {
+          const [existing] = await tx.select({ id: notes.id }).from(notes).limit(1)
+          if (existing) return { skipped: true }
+          const rows = [
+            { title: 'A note', body: 'Made when this workspace was created with example content.' },
+            { title: 'Another note', body: 'Delete these two whenever you like — they are ordinary rows.' },
+          ]
+          await tx
+            .insert(notes)
+            .values(rows.map((r) => ({ workspaceId, title: r.title, body: r.body, createdAt: now })))
+          return { created: { notes: rows.length } }
+        },
+        { userId: actorId },
+      )
+    },
+  },
+
   /**
    * What this module reacts to. The pattern may be an exact name, `module.*`, or `*`; handlers are
    * durable consumers in production, so one that throws is retried rather than lost.
