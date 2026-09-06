@@ -12,9 +12,10 @@
 -- 2026-09-06), and a replay is not hypothetical: drizzle keys applied migrations by content hash, so
 -- editing any file in this folder makes every file in it run again.
 --
--- `@kernhq/kernel` exports `rlsPolicySql('mod_template', 'notes')`, which emits the enable, force and
--- create statements below — not the drop, which is added by hand here and in every first-party
--- module. `src/server/migrations.test.ts` is what proves the folder replays.
+-- `@kernhq/kernel` exports `rlsPolicySql('mod_template', 'notes')`, which emits the four statements
+-- below in this order, the drop included — since `@kernhq/kernel@0.10.3` (2026-09-06). Older kernels
+-- emitted the other three, so a policy copied from one needs the drop added by hand.
+-- `src/server/migrations.test.ts` is what proves the folder replays either way.
 --
 -- Superusers bypass RLS, so a database owned by one will pass a test that proves nothing: run the
 -- application as a plain role.

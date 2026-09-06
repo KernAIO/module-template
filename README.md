@@ -52,9 +52,9 @@ Each of these has been got wrong before.
    is not bumped by a release — chat once shipped as 0.2.0 while telling every admin it was 0.1.0,
    and that literal is what `workspace_modules.installed_version` recorded.
 5. **Write the RLS migration.** `pnpm db:generate` will not. Copy `0001_rls.sql` and change the
-   table names. `rlsPolicySql` from `@kernhq/kernel` emits the enable, force and create statements,
-   but not the `drop policy if exists` that precedes each one — add that by hand, and see
-   **Your migrations must survive a replay** below for why.
+   table names; `rlsPolicySql` from `@kernhq/kernel` emits the same four statements. See
+   **Your migrations must survive a replay** below for why the `drop policy if exists` is one
+   of them.
 6. **Host it.** A module nothing imports is invisible: its tests pass, it publishes, and every call
    404s. Add it to `featureModules` in the `core` repo's `src/service.ts`, or to whichever service
    should hold it.

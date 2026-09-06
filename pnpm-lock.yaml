@@ -34,8 +34,8 @@ importers:
         specifier: ^0.8.0
         version: 0.8.0
       '@kernhq/kernel':
-        specifier: ^0.10.0
-        version: 0.10.0(@types/pg@8.23.1)
+        specifier: ^0.10.3
+        version: 0.10.3(@types/pg@8.23.1)
       '@kernhq/testing':
         specifier: ^0.1.12
         version: 0.1.12(@types/pg@8.23.1)
@@ -831,8 +831,8 @@ packages:
   '@kernhq/contracts@0.8.0':
     resolution: {integrity: sha512-UcQE9tYnlrwahW7v3ilUvgJSaiLdrA6CaOfONGhUBqh2s7LStPUa9skeyfbGU6TWJPFhhlOi2nKp30HVpxnATg==}
 
-  '@kernhq/kernel@0.10.0':
-    resolution: {integrity: sha512-XjJU4JsYq54ASWd0KVdv3nOtM0Skf0iNENWpAFMgyYoVsA8CNqvT2Wr7Y4kl/j6HnZiw59ycjUdHSY+waSIs3w==}
+  '@kernhq/kernel@0.10.3':
+    resolution: {integrity: sha512-KwY29bYDvzzfk1XGJQiUZuk2MyOYb3siNkMdcmJeziO+n02LWoux95igMVzMlRCWPf9hO5PbLETHVJUwHZ4yMg==}
 
   '@kernhq/kernel@0.9.1':
     resolution: {integrity: sha512-s5Q1vhUYxk0MwFLjSWODNzDVCgY+WjmHi4ZjMiFBsxSoxby4tUlGsGEBAabwn4fOS6UZEQ0D6GD58qKVnB2B2A==}
@@ -3827,14 +3827,14 @@ snapshots:
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
-  '@kernhq/kernel@0.10.0(@types/pg@8.23.1)':
+  '@kernhq/kernel@0.10.3(@types/pg@8.23.1)':
     dependencies:
       '@aws-sdk/client-s3': 3.1115.0
       '@aws-sdk/s3-request-presigner': 3.1115.0
       '@fastify/cors': 11.3.0
       '@fastify/helmet': 13.1.1
       '@fastify/rate-limit': 10.3.0
-      '@kernhq/contracts': 0.7.0
+      '@kernhq/contracts': 0.8.0
       '@orpc/contract': 1.15.0
       '@orpc/openapi': 1.15.0(fastify@5.12.1)
       '@orpc/server': 1.15.0(fastify@5.12.1)
